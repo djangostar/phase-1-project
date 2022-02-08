@@ -1,13 +1,71 @@
 //** Global Variables **/
+/** Dynamic functions **/
 
 const mainUrl = 'https://api.chucknorris.io/jokes/random'
-let jokeArr = []
-
-/** Dynamic functions **/
 const makeEl = el => document.createElement(el)
 
 /** Node getters **/
 const mainDiv = () => document.getElementById('main')
+
+/** Template **/
+const pageTemplate = () => {
+    return `
+    <div class="container">
+            <img class="responsive-img" src="https://cdn.flickeringmyth.com/wp-content/uploads/2020/03/chuck-norris.jpg">
+            <small class="text-muted"><strong>Chuck knows if you laugh</strong></small>
+            <div class="button-container">
+                <button class="generate">Generate</button>
+            </div>
+        </div>
+    `
+}
+
+/** Renderers **/
+const renderHomePage = () => {
+    mainDiv().innerHTML = pageTemplate()
+}
+
+
+const renderJoke = (joke) => {
+    // Create elements
+    const divRow = makeEl('div')
+    const divCol = makeEl('div')
+    const divCard = makeEl('div')
+    const divImg = makeEl('div')
+    // Create <img> + <span> elements for avatar
+    const imgAvatar = makeEl('img')
+    const cardTitle = makeEl('span')
+    // Create elements for the card content (joke)
+    const cardContent = makeEl('div')
+    const jokeTxt = makeEl('p')
+    // Create elements for 'card action' (like button)
+    const cardAction = makeEl('div')
+    const likeBttn = makeEl('button')
+    
+    // Add class attributes to elements
+    divRow.classList.add('row')
+    divCol.classList.add('col s12 m7')
+    divCard.classList.add('card')
+    divImg.classList.add('card-image')
+    cardTitle.classList.add('card-title')
+    cardContent.classList.add('card-content')
+    jokeTxt.classList.add('center-align')
+    cardAction.classList.add('card-action')
+    
+    // Add id attributes to elements
+    imgAvatar.id ='avatar'
+    jokeTxt.id = 'joke'
+    likeBttn.id = 'like-button'
+
+    // Add values to elements
+    imgAvatar.src = joke.icon_url
+    cardTitle.innerText = 'Litte Chuck'
+    jokeTxt.innerText = joke.value
+    likeBttn.innerText = 'Like!'
+}
+
+
+//** Events */
 
 const loadJoke = () => {
     fetch(mainUrl)
@@ -15,54 +73,6 @@ const loadJoke = () => {
     .then(joke => joke)
 }
 
-const renderJoke = (joke) => {
-    //Make a card
-    const divRow = makeEl('div')
-    divRow.classList.add('row')
-    mainDiv().appendChild(divRow)
-    const divCol = makeEl('div')
-    divCol.classList.add('col s12 m7')
-    divRow.appendChild(divCol)
-    const divCard = makeEl('div')
-    divCard.classList.add('card')
-    divCol.appendChild(divCard)
-    
-    // Chuck Avatar
-    const divImg = makeEl('div')
-    divImg.classList.add('card-image')
-    const imgAvatar = makeEl('img')
-    imgAvatar.id ='avatar'
-    imgAvatar.src = joke.icon_url
-    divImg.appendChild(imgAvatar)
-    const cardTitle = makeEl('span')
-    cardTitle.classList.add('card-title')
-    cardTitle.innerText = 'Litte Chuck'
-    divImg.appendChild(cardTitle)
-    
-    // Div for the card content
-
-    const cardContent = makeEl('div')
-    cardContent.classList.add('card-content')
-    divCard.appendChild(cardContent)
-    // The actual joke
-    const jokeTxt = makeEl('p')
-    jokeTxt.classList.add('center-align')
-    jokeTxt.id = 'joke'
-    jokeTxt.innerText = joke.value
-    cardContent.appendChild(jokeTxt)
-    
-    // Like Button
-    const cardAction = makeEl('div')
-    cardAction.classList.add('card-action')
-    divCard.appendChild(cardAction)
-    const likeBttn = makeEl('button')
-    likeBttn.id = 'like-button'
-    likeBttn.innerText = 'Like!'
-    cardAction.appendChild(likeBttn)
-
-}
-
-console.log(renderJoke())
-document.addEventListener('DOMContentLoaded', () => {
-    loadJoke()
+document.addEventListener('DOMContentLoaded', (e) => {
+    renderHomePage()
 })
