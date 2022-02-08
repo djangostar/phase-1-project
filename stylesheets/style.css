@@ -5,9 +5,15 @@ body {
 }
 div.nav-wrapper a {
     color: black;
+    text-shadow: -2px 0 yellow, 0 2px yellow, 2px 0 yellow, 0 -2px yellow;
     font-family: 'Press Start 2P', cursive;
 }
 
+.home-template {
+    color: yellow;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    font-family: 'Press Start 2P', cursive;
+}
 .container {
     text-align: center;
     font-size: 2rem;
