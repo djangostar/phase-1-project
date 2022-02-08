@@ -9,6 +9,11 @@ div.nav-wrapper a {
     font-family: 'Press Start 2P', cursive;
 }
 
+.text-muted {
+    font-family: 'Wallpoet', cursive;
+    text-shadow: -2px 0 yellow, 0 2px yellow, 2px 0 yellow, 0 -2px yellow;
+}
+
 .home-template {
     color: yellow;
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
@@ -22,12 +27,13 @@ div.nav-wrapper a {
 .generate {
     background-color: #6d5cb8;
     border: none;
-    color: white;
+    color: rgb(47, 2, 247);
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+    font-family: 'Press Start 2P', cursive;
 }
 
 .responsive-img {
