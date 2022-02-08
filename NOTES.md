@@ -1,12 +1,12 @@
-# Hateful Eight Info
+# Chuck Norris Jokes
 
 ### Overview
-Information about the motion picture 'The Hateful Eight'
+Random Chuck Norris Joke Generator
 
 ### Features
-*Have buttons that displays the details
-*have pictures of the Movie banner with a like and dislike button
-*dropdown menu if possible
+*Have a Generate button
+*Generate Avatar
+*Event listeners; DOMContentLoaded, click, submit, mouseover
 
 ### MVP
 *Must have HTML/CSS/JAVASCRIPT frontend that accesses data from a public API
