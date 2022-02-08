@@ -24,7 +24,7 @@ div.nav-wrapper a {
     font-size: 2rem;
 }
 
-.generate {
+#generate {
     background-color: #6d5cb8;
     border: none;
     color: rgb(47, 2, 247);

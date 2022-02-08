@@ -6,6 +6,8 @@ const makeEl = el => document.createElement(el)
 
 /** Node getters **/
 const mainDiv = () => document.getElementById('main')
+const homePageLink = () => document.getElementById('home-page-link')
+const restartLink = () => document.getElementById('restart')
 
 /** Template **/
 const pageTemplate = () => {
@@ -35,11 +37,13 @@ const chuckNorrisTemplate = () => {
             <img class="responsive-img" src="https://cdn.flickeringmyth.com/wp-content/uploads/2020/03/chuck-norris.jpg">
             <small class="text-muted"><strong>Chuck knows if you laugh</strong></small>
             <div class="button-container">
-                <button class="generate">Generate</button>
+            <a class="waves-effect waves-light btn" id="generate">Generate</a>
             </div>
         </div>
     `
 }
+
+
 
 /** Renderers **/
 
@@ -51,18 +55,26 @@ const renderChuckNorris = () => {
     mainDiv().innerHTML = chuckNorrisTemplate()
 }
 
+const renderJoke = () => {
+    return jokeTemplate()
+}
+
+
 // const renderJoke = (joke) => {
 //     // Create elements
 //     const divRow = makeEl('div')
 //     const divCol = makeEl('div')
 //     const divCard = makeEl('div')
 //     const divImg = makeEl('div')
+
 //     // Create <img> + <span> elements for avatar
 //     const imgAvatar = makeEl('img')
 //     const cardTitle = makeEl('span')
+
 //     // Create elements for the card content (joke)
 //     const cardContent = makeEl('div')
 //     const jokeTxt = makeEl('p')
+
 //     // Create elements for 'card action' (like button)
 //     const cardAction = makeEl('div')
 //     const likeBttn = makeEl('button')
@@ -99,14 +111,48 @@ const renderChuckNorris = () => {
 
 //** Events */
 
+const chuckNorrisHomeLinkEvent = () => {
+    homePageLink().addEventListener('click', (e) => {
+        e.preventDefault()
+        renderChuckNorris()
+    })
+}
 
+const displayJoke = () => {
+    document.getElementById('generate').addEventListener('click', (e) => {
+        e.preventDefault()
+        loadJoke()
+    })
+}
 
 const loadJoke = () => {
     fetch(mainUrl)
-    .then(res => res.json())
-    .then(joke => joke)
+    .then(resp => resp.json())
+    .then(joke => {
+        return `
+        <div class="row">
+        <div class="col s12 m7">
+          <div class="card">
+            <div class="card-image">
+              <img src="${joke.icon_url}">
+              <span class="card-title">Card Title</span>
+            </div>
+            <div class="card-content">
+              <p>${joke.value}</p>
+            </div>
+            <div class="card-action">
+              <a href="#">This is a link</a>
+            </div>
+          </div>
+        </div>
+      </div>
+        `
+    })
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     renderHomePage()
+    chuckNorrisHomeLinkEvent()
+    displayJoke()
+    
 })
