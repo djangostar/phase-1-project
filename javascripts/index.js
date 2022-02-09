@@ -12,37 +12,38 @@ const restartLink = () => document.getElementById('restart')
 /** Template **/
 const pageTemplate = () => {
     return `
-    <div class="container">
+    <div class="container" id="page-template">
         <img class="responsive-img" src="https://api.chucknorris.io/img/chucknorris_logo_coloured_small@2x.png">
         <h2 class='home-template'> Your source of laughter <h2>
     </div>
     `
-    // const container = makeEl('div')
-    // const img = makeEl('img')
-    // const h2 = makeEl('h2')
-
-    // container.className = "container"
-    // img.className = 'responsive-img'
-    // img.src = "https://api.chucknorris.io/img/chucknorris_logo_coloured_small@2x.png"
-    // h2.className = "home-template"
-    // h2.innerText = 'Your Source of Laughter'
-
-    // container.appendChild(img)
-    // container.appendChild(h2)
 }
 
-const chuckNorrisTemplate = () => {
-    return `
-    <div class="container">
-            <img class="responsive-img" src="https://cdn.flickeringmyth.com/wp-content/uploads/2020/03/chuck-norris.jpg">
-            <small class="text-muted"><strong>Chuck knows if you laugh</strong></small>
-            <div class="button-container">
-            <a class="waves-effect waves-light btn" id="generate">Generate</a>
-            </div>
-        </div>
-    `
-}
 
+
+// const chuckJokeTemplate = () => {
+//     let card = makeEl('li')
+//     card.className = 'main-card'
+//     card.innerHTML = `
+//     <div class="row">
+//     <div class="col s12 m7">
+//       <div class="card">
+//         <div class="card-image">
+//           <img src="${joke.icon_url}">
+//           <span class="card-title">Card Title</span>
+//         </div>
+//         <div class="card-content">
+//           <p>${joke.value}</p>
+//         </div>
+//         <div class="card-action">
+//           <a href="#">This is a link</a>
+//         </div>
+//       </div>
+//     </div>
+//   </div>    
+//     `
+//     document.querySelector('.container').appendChild(card)
+// }
 
 
 /** Renderers **/
@@ -52,24 +53,78 @@ const renderHomePage = () => {
 }
 
 const renderChuckNorris = () => {
-    mainDiv().innerHTML = chuckNorrisTemplate()
+    mainDiv().innerHTML = ''
+    const divContainer = makeEl('div')
+    const chuckImg = makeEl('img')
+    const smallMute = makeEl('small')
+    const strongEl = makeEl('strong')
+    const divBttnCont = makeEl('div')
+    const bttn = makeEl('a')
+
+    divContainer.className = 'container'
+    divContainer.id = 'chuck-template'
+    chuckImg.className = "responsive-img"
+    chuckImg.src = "https://cdn.flickeringmyth.com/wp-content/uploads/2020/03/chuck-norris.jpg"
+    smallMute.className = "text-muted"
+    strongEl.innerText = 'Chuck knows if you laugh'
+    divBttnCont.className = 'button-container'
+    bttn.href='#'
+    bttn.className = "button"
+    bttn.id = "generate"
+    bttn.innerText = "Generate"
+    
+    divContainer.appendChild(chuckImg)
+    divContainer.appendChild(smallMute)
+    divContainer.appendChild(divBttnCont)
+
+    smallMute.appendChild(strongEl)
+    divBttnCont.appendChild(bttn)
+
+    mainDiv().appendChild(divContainer)
+
+    bttn.addEventListener('click', (e) => {
+        e.preventDefault()
+        loadJokes()
+    })
 }
 
-const renderJoke = () => {
-    return jokeTemplate()
-}
 
+const renderJoke = (joke) => {
+    let card = makeEl('li')
+    card.className = 'main-card'
+    card.innerHTML = `
+    <div class="row">
+    <div class="col s12 m7">
+      <div class="card">
+        <div class="card-image">
+          <img src="${joke.icon_url}">
+          <span class="card-title">Chuck is laughing</span>
+        </div>
+        <div class="card-content">
+          <p>${joke.value}</p>
+        </div>
+        <div class="card-action">
+          <a href="#" class="delete-bttn">Delete</a>
+        </div>
+      </div>
+    </div>
+  </div>    
+    `
+    document.querySelector('.joke-card').appendChild(card)
+    document.querySelector('.delete-bttn').addEventListener('click', (e) => {
+        e.preventDefault
+        card.remove()
+    })
 
-// const renderJoke = (joke) => {
-//     // Create elements
-//     const divRow = makeEl('div')
-//     const divCol = makeEl('div')
-//     const divCard = makeEl('div')
-//     const divImg = makeEl('div')
+    // // Create elements
+    // const divRow = makeEl('div')
+    // const divCol = makeEl('div')
+    // const divCard = makeEl('div')
+    // const divImg = makeEl('div')
 
-//     // Create <img> + <span> elements for avatar
-//     const imgAvatar = makeEl('img')
-//     const cardTitle = makeEl('span')
+    // // Create <img> + <span> elements for avatar
+    // const imgAvatar = makeEl('img')
+    // const cardTitle = makeEl('span')
 
 //     // Create elements for the card content (joke)
 //     const cardContent = makeEl('div')
@@ -106,10 +161,16 @@ const renderJoke = () => {
 //     divRow.append(divCol, divCard, divImg, cardContent, cardAction)
 //     mainDiv().append(divRow)
 //     console.log(mainDiv())
-// }
+}
 
 
 //** Events */
+
+const loadJokes = () => {
+    fetch(mainUrl)
+    .then(resp => resp.json())
+    .then(jokeObj => renderJoke(jokeObj))
+}
 
 const chuckNorrisHomeLinkEvent = () => {
     homePageLink().addEventListener('click', (e) => {
@@ -117,42 +178,10 @@ const chuckNorrisHomeLinkEvent = () => {
         renderChuckNorris()
     })
 }
-
-const displayJoke = () => {
-    document.getElementById('generate').addEventListener('click', (e) => {
-        e.preventDefault()
-        loadJoke()
-    })
-}
-
-const loadJoke = () => {
-    fetch(mainUrl)
-    .then(resp => resp.json())
-    .then(joke => {
-        return `
-        <div class="row">
-        <div class="col s12 m7">
-          <div class="card">
-            <div class="card-image">
-              <img src="${joke.icon_url}">
-              <span class="card-title">Card Title</span>
-            </div>
-            <div class="card-content">
-              <p>${joke.value}</p>
-            </div>
-            <div class="card-action">
-              <a href="#">This is a link</a>
-            </div>
-          </div>
-        </div>
-      </div>
-        `
-    })
-}
+    
 
 document.addEventListener('DOMContentLoaded', () => {
     renderHomePage()
     chuckNorrisHomeLinkEvent()
-    displayJoke()
     
 })
