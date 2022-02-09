@@ -7,10 +7,11 @@ const makeEl = el => document.createElement(el)
 /** Node getters **/
 const mainDiv = () => document.getElementById('main')
 const homePageLink = () => document.getElementById('home-page-link')
-const restartLink = () => document.getElementById('restart')
+//const restartLink = () => document.getElementById('restart')
 
 /** Template **/
 const pageTemplate = () => {
+    console.log('testing')
     return `
     <div class="container" id="page-template">
         <img class="responsive-img" src="https://api.chucknorris.io/img/chucknorris_logo_coloured_small@2x.png">
@@ -90,6 +91,9 @@ const renderChuckNorris = () => {
 
 
 const renderJoke = (joke) => {
+
+    //Started with literal
+
 //     let card = makeEl('li')
 //     card.className = 'main-card'
 //     card.innerHTML = `
@@ -169,10 +173,13 @@ const renderJoke = (joke) => {
     
     document.querySelector('.joke-card').appendChild(card)
 
-    document.querySelector('.delete-bttn').addEventListener('click', (e) => {
+    //Delete joke
+    document.querySelector('.delete-button').addEventListener('click', (e) => {
         e.preventDefault
         card.remove()
     })
+
+    
 
 }
 
@@ -185,21 +192,35 @@ const loadJokes = () => {
     .then(jokeObj => renderJoke(jokeObj))
 }
 
+//Renders the page for functionality
+
 const chuckNorrisHomeLinkEvent = () => {
     homePageLink().addEventListener('click', (e) => {
         e.preventDefault()
         renderChuckNorris()
     })
 }
-    
+
+//Reset Entire Page
+
 const resetEvent = () => {
     document.getElementById('restart').addEventListener('click', (e) => {
         e.preventDefault()
-        pageTemplate()
+        renderHomePage()
     })
 }
+
+//Added alert event with thanks
+
+const credits = () => {
+    document.getElementById('credits').addEventListener('click', () => {
+       alert('Special thanks to: Natasha Koller, Shante Torres & Nancy Noyes for beleiving in me.')
+    })
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-    renderHomePage()
-    chuckNorrisHomeLinkEvent()
-    resetEvent()
+    renderHomePage();
+    chuckNorrisHomeLinkEvent();
+    resetEvent();
+    credits();
 })

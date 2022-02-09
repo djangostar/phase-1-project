@@ -53,6 +53,17 @@ div.nav-wrapper a {
     align-items: center;
     margin-left: auto;
     margin-right: auto;
-
     font-family: 'Press Start 2P', cursive;
+}
+
+.card-title {
+    font-family: 'Press Start 2P', cursive;
+    color: rgb(119, 119, 247)
+}
+
+.delete-button {
+    font-family: 'Press Start 2P', cursive;
+    background-color: yellow;
+    border-radius: 10px;
+    border: 4px double #cccccc;
 }
