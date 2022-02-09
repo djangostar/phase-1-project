@@ -90,77 +90,90 @@ const renderChuckNorris = () => {
 
 
 const renderJoke = (joke) => {
-    let card = makeEl('li')
-    card.className = 'main-card'
-    card.innerHTML = `
-    <div class="row">
-    <div class="col s12 m7">
-      <div class="card">
-        <div class="card-image">
-          <img src="${joke.icon_url}">
-          <span class="card-title">Chuck is laughing</span>
-        </div>
-        <div class="card-content">
-          <p>${joke.value}</p>
-        </div>
-        <div class="card-action">
-          <a href="#" class="delete-bttn">Delete</a>
-        </div>
-      </div>
-    </div>
-  </div>    
-    `
+//     let card = makeEl('li')
+//     card.className = 'main-card'
+//     card.innerHTML = `
+//     <div class="row">
+//     <div class="col s12 m7">
+//       <div class="card">
+//         <div class="card-image">
+//           <img src="${joke.icon_url}">
+//           <span class="card-title">Chuck is laughing</span>
+//         </div>
+//         <div class="card-content">
+//           <p>${joke.value}</p>
+//         </div>
+//         <div class="card-action">
+//           <button href="#" class="delete-bttn">Delete</button>
+//         </div>
+//       </div>
+//     </div>
+//   </div>    
+//     `
+    
+   
+    // Create elements
+    const card = makeEl('li')
+    const divRow = makeEl('div')
+    const divCol = makeEl('div')
+    const divCard = makeEl('div')
+    const divImg = makeEl('div')
+
+    // Create <img> + <span> elements for avatar
+    const imgAvatar = makeEl('img')
+    const cardTitle = makeEl('span')
+
+    // Create elements for the card content (joke)
+    const cardContent = makeEl('div')
+    const jokeTxt = makeEl('p')
+
+    // Create elements for 'card action' (like button)
+    const cardAction = makeEl('div')
+    const delBttn = makeEl('button')
+    
+    // Add class attributes to elements
+    card.classList.add('main-card')
+    divRow.classList.add('row')
+    divCol.classList.add('col-s12-m7')
+    divCard.classList.add('card')
+    divImg.classList.add('card-image')
+    cardTitle.classList.add('card-title')
+    cardContent.classList.add('card-content')
+    jokeTxt.classList.add('center-align')
+    cardAction.classList.add('card-action')
+    delBttn.classList.add('delete-button')
+    
+    // Add id attributes to elements
+    imgAvatar.id ='avatar'
+    jokeTxt.id = 'joke'
+   
+
+    // Add values to elements
+    imgAvatar.src = joke.icon_url
+    cardTitle.innerText = 'Litte Chuck'
+    jokeTxt.innerText = joke.value
+    delBttn.innerText = 'Delete!'
+
+    // Append elements
+    card.appendChild(divRow)
+    card.appendChild(divCol)
+    card.appendChild(divCard)
+    card.appendChild(divImg)
+    card.appendChild(cardContent)
+    card.appendChild(cardAction)
+
+    divImg.appendChild(imgAvatar)
+    divImg.appendChild(cardTitle)
+    cardContent.appendChild(jokeTxt)
+    cardAction.appendChild(delBttn)
+    
     document.querySelector('.joke-card').appendChild(card)
+
     document.querySelector('.delete-bttn').addEventListener('click', (e) => {
         e.preventDefault
         card.remove()
     })
 
-    // // Create elements
-    // const divRow = makeEl('div')
-    // const divCol = makeEl('div')
-    // const divCard = makeEl('div')
-    // const divImg = makeEl('div')
-
-    // // Create <img> + <span> elements for avatar
-    // const imgAvatar = makeEl('img')
-    // const cardTitle = makeEl('span')
-
-//     // Create elements for the card content (joke)
-//     const cardContent = makeEl('div')
-//     const jokeTxt = makeEl('p')
-
-//     // Create elements for 'card action' (like button)
-//     const cardAction = makeEl('div')
-//     const likeBttn = makeEl('button')
-    
-//     // Add class attributes to elements
-//     divRow.classList.add('row')
-//     divCol.classList.add('col-s12-m7')
-//     divCard.classList.add('card')
-//     divImg.classList.add('card-image')
-//     cardTitle.classList.add('card-title')
-//     cardContent.classList.add('card-content')
-//     jokeTxt.classList.add('center-align')
-//     cardAction.classList.add('card-action')
-    
-//     // Add id attributes to elements
-//     imgAvatar.id ='avatar'
-//     jokeTxt.id = 'joke'
-//     likeBttn.id = 'like-button'
-
-//     // Add values to elements
-//     imgAvatar.src = joke.icon_url
-//     cardTitle.innerText = 'Litte Chuck'
-//     jokeTxt.innerText = joke.value
-//     likeBttn.innerText = 'Like!'
-
-//     divImg.append(imgAvatar, cardTitle)
-//     cardContent.append(jokeTxt)
-//     cardAction.append(likeBttn)
-//     divRow.append(divCol, divCard, divImg, cardContent, cardAction)
-//     mainDiv().append(divRow)
-//     console.log(mainDiv())
 }
 
 
@@ -179,9 +192,14 @@ const chuckNorrisHomeLinkEvent = () => {
     })
 }
     
-
+const resetEvent = () => {
+    document.getElementById('restart').addEventListener('click', (e) => {
+        e.preventDefault()
+        pageTemplate()
+    })
+}
 document.addEventListener('DOMContentLoaded', () => {
     renderHomePage()
     chuckNorrisHomeLinkEvent()
-    
+    resetEvent()
 })
