@@ -61,9 +61,14 @@ div.nav-wrapper a {
     color: rgb(119, 119, 247)
 }
 
+.card-content {
+    color: yellow;
+    text-shadow: -2px 0 rgb(41, 5, 201), 0 2px rgb(41, 5, 201), 2px 0 rgb(41, 5, 201), 0 -2px rgb(41, 5, 201);
+}
 .delete-button {
     font-family: 'Press Start 2P', cursive;
     background-color: yellow;
     border-radius: 10px;
     border: 4px double #cccccc;
+    cursor: pointer;
 }
