@@ -214,7 +214,7 @@ const resetEvent = () => {
 
 const credits = () => {
     document.getElementById('credits').addEventListener('click', () => {
-       alert('Special thanks to: Natasha Koller, Shante Torres & Nancy Noyes for beleiving in me.')
+       alert('Special thanks to: Natasha Koller, Shante Torres & Nancy Noyes for believing in me.')
     })
 }
 
