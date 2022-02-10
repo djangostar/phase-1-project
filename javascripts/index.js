@@ -2,16 +2,16 @@
 const mainUrl = 'https://api.chucknorris.io/jokes/random'
 
 /** Dynamic functions **/
-const makeEl = el => document.createElement(el)
+const makeEl = el => document.createElement(el);
 
 /** Node getters **/
-const mainDiv = () => document.getElementById('main')
-const homePageLink = () => document.getElementById('home-page-link')
+const mainDiv = () => document.getElementById('main');
+const homePageLink = () => document.getElementById('home-page-link');
 //const restartLink = () => document.getElementById('restart')
 
 /** Template **/
 const pageTemplate = () => {
-    console.log('testing')
+    //console.log('testing')
     return `
     <div class="container" id="page-template">
         <img class="responsive-img" src="https://api.chucknorris.io/img/chucknorris_logo_coloured_small@2x.png">
@@ -50,19 +50,19 @@ const pageTemplate = () => {
 /** Renderers **/
 
 const renderHomePage = () => {
-    mainDiv().innerHTML = pageTemplate()
+    mainDiv().innerHTML = pageTemplate();
 }
 
 const renderChuckNorris = () => {
-    mainDiv().innerHTML = ''
-    const divContainer = makeEl('div')
-    const chuckImg = makeEl('img')
-    const smallMute = makeEl('small')
-    const strongEl = makeEl('strong')
-    const divBttnCont = makeEl('div')
-    const bttn = makeEl('a')
+    mainDiv().innerHTML = '';
+    const divContainer = makeEl('div');
+    const chuckImg = makeEl('img');
+    const smallMute = makeEl('small');
+    const strongEl = makeEl('strong');
+    const divBttnCont = makeEl('div');
+    const bttn = makeEl('a');
 
-    divContainer.className = 'container'
+    divContainer.className = 'container';
     divContainer.id = 'chuck-template'
     chuckImg.className = "responsive-img"
     chuckImg.src = "https://cdn.flickeringmyth.com/wp-content/uploads/2020/03/chuck-norris.jpg"
@@ -148,7 +148,7 @@ const renderJoke = (joke) => {
     delBttn.classList.add('delete-button')
     
     // Add id attributes to elements
-    imgAvatar.id ='avatar'
+    imgAvatar.id = 'avatar'
     jokeTxt.id = 'joke'
    
 
