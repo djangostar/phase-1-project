@@ -63,8 +63,8 @@ const renderChuckNorris = () => {
     const bttn = makeEl('a');
 
     divContainer.className = 'container';
-    divContainer.id = 'chuck-template'
-    chuckImg.className = "responsive-img"
+    divContainer.id = 'chuck-template';
+    chuckImg.className = "responsive-img";
     chuckImg.src = "https://cdn.flickeringmyth.com/wp-content/uploads/2020/03/chuck-norris.jpg"
     smallMute.className = "text-muted"
     strongEl.innerText = 'Chuck knows if you laugh'
@@ -169,20 +169,16 @@ const renderJoke = (joke) => {
     divImg.appendChild(imgAvatar)
     divImg.appendChild(cardTitle)
     cardContent.appendChild(jokeTxt)
-    cardAction.appendChild(delBttn)
+    cardAction.appendChild(delBttn);
     
-    document.querySelector('.joke-card').appendChild(card)
+    document.querySelector('.joke-card').appendChild(card);
 
     //Delete joke
     document.querySelector('.delete-button').addEventListener('click', (e) => {
-        e.preventDefault
-        card.remove()
-    })
-
-    
-
-}
-
+        e.preventDefault;
+        card.remove();
+    });
+};
 
 //** Events */
 
@@ -196,8 +192,8 @@ const loadJokes = () => {
 
 const chuckNorrisHomeLinkEvent = () => {
     homePageLink().addEventListener('click', (e) => {
-        e.preventDefault()
-        renderChuckNorris()
+        e.preventDefault();
+        renderChuckNorris();
     })
 }
 
@@ -205,8 +201,8 @@ const chuckNorrisHomeLinkEvent = () => {
 
 const resetEvent = () => {
     document.getElementById('restart').addEventListener('click', (e) => {
-        e.preventDefault()
-        renderHomePage()
+        e.preventDefault();
+        renderHomePage();
     })
 }
 
