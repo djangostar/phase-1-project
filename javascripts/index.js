@@ -1,5 +1,5 @@
 //** Global Variables **/
-const mainUrl = 'https://api.chucknorris.io/jokes/random'
+const mainUrl = 'https://api.chucknorris.io/jokes/random';
 
 /** Dynamic functions **/
 const makeEl = el => document.createElement(el);
@@ -18,9 +18,7 @@ const pageTemplate = () => {
         <h2 class='home-template'> Your source of laughter <h2>
     </div>
     `
-}
-
-
+};
 
 // const chuckJokeTemplate = () => {
 //     let card = makeEl('li')
@@ -46,7 +44,6 @@ const pageTemplate = () => {
 //     document.querySelector('.container').appendChild(card)
 // }
 
-
 /** Renderers **/
 
 const renderHomePage = () => {
@@ -55,6 +52,7 @@ const renderHomePage = () => {
 
 const renderChuckNorris = () => {
     mainDiv().innerHTML = '';
+    // Create Elements
     const divContainer = makeEl('div');
     const chuckImg = makeEl('img');
     const smallMute = makeEl('small');
@@ -62,33 +60,33 @@ const renderChuckNorris = () => {
     const divBttnCont = makeEl('div');
     const bttn = makeEl('a');
 
+    //Add attributes to elements
     divContainer.className = 'container';
     divContainer.id = 'chuck-template';
     chuckImg.className = "responsive-img";
-    chuckImg.src = "https://cdn.flickeringmyth.com/wp-content/uploads/2020/03/chuck-norris.jpg"
-    smallMute.className = "text-muted"
-    strongEl.innerText = 'Chuck knows if you laugh'
-    divBttnCont.className = 'button-container'
-    bttn.href='#'
-    bttn.className = "button"
-    bttn.id = "generate"
-    bttn.innerText = "Generate"
+    chuckImg.src = "https://cdn.flickeringmyth.com/wp-content/uploads/2020/03/chuck-norris.jpg";
+    smallMute.className = "text-muted";
+    strongEl.innerText = 'Chuck knows if you laugh';
+    divBttnCont.className = 'button-container';
+    bttn.href='#';
+    bttn.className = "button";
+    bttn.id = "generate";
+    bttn.innerText = "Generate";
     
-    divContainer.appendChild(chuckImg)
-    divContainer.appendChild(smallMute)
-    divContainer.appendChild(divBttnCont)
+    divContainer.appendChild(chuckImg);
+    divContainer.appendChild(smallMute);
+    divContainer.appendChild(divBttnCont);
 
-    smallMute.appendChild(strongEl)
-    divBttnCont.appendChild(bttn)
+    smallMute.appendChild(strongEl);
+    divBttnCont.appendChild(bttn);
 
-    mainDiv().appendChild(divContainer)
+    mainDiv().appendChild(divContainer);
 
     bttn.addEventListener('click', (e) => {
-        e.preventDefault()
-        loadJokes()
-    })
-}
-
+        e.preventDefault();
+        loadJokes();
+    });
+};
 
 const renderJoke = (joke) => {
 
@@ -115,60 +113,58 @@ const renderJoke = (joke) => {
 //   </div>    
 //     `
     
-   
     // Create elements
-    const card = makeEl('li')
-    const divRow = makeEl('div')
-    const divCol = makeEl('div')
-    const divCard = makeEl('div')
-    const divImg = makeEl('div')
+    const card = makeEl('li');
+    const divRow = makeEl('div');
+    const divCol = makeEl('div');
+    const divCard = makeEl('div');
+    const divImg = makeEl('div');
 
     // Create <img> + <span> elements for avatar
-    const imgAvatar = makeEl('img')
-    const cardTitle = makeEl('span')
+    const imgAvatar = makeEl('img');
+    const cardTitle = makeEl('span');
 
     // Create elements for the card content (joke)
-    const cardContent = makeEl('div')
-    const jokeTxt = makeEl('p')
+    const cardContent = makeEl('div');
+    const jokeTxt = makeEl('p');
 
     // Create elements for 'card action' (like button)
-    const cardAction = makeEl('div')
-    const delBttn = makeEl('button')
+    const cardAction = makeEl('div');
+    const delBttn = makeEl('button');
     
     // Add class attributes to elements
-    card.classList.add('main-card')
-    divRow.classList.add('row')
-    divCol.classList.add('col-s12-m7')
-    divCard.classList.add('card')
-    divImg.classList.add('card-image')
-    cardTitle.classList.add('card-title')
-    cardContent.classList.add('card-content')
-    jokeTxt.classList.add('center-align')
-    cardAction.classList.add('card-action')
-    delBttn.classList.add('delete-button')
+    card.classList.add('main-card');
+    divRow.classList.add('row');
+    divCol.classList.add('col-s12-m7');
+    divCard.classList.add('card');
+    divImg.classList.add('card-image');
+    cardTitle.classList.add('card-title');
+    cardContent.classList.add('card-content');
+    jokeTxt.classList.add('center-align');
+    cardAction.classList.add('card-action');
+    delBttn.classList.add('delete-button');
     
     // Add id attributes to elements
-    imgAvatar.id = 'avatar'
-    jokeTxt.id = 'joke'
+    imgAvatar.id = 'avatar';
+    jokeTxt.id = 'joke';
    
-
     // Add values to elements
-    imgAvatar.src = joke.icon_url
-    cardTitle.innerText = 'Litte Chuck'
-    jokeTxt.innerText = joke.value
-    delBttn.innerText = 'Delete!'
+    imgAvatar.src = joke.icon_url;
+    cardTitle.innerText = 'Litte Chuck';
+    jokeTxt.innerText = joke.value;
+    delBttn.innerText = 'Delete!';
 
     // Append elements
-    card.appendChild(divRow)
-    card.appendChild(divCol)
-    card.appendChild(divCard)
-    card.appendChild(divImg)
-    card.appendChild(cardContent)
-    card.appendChild(cardAction)
+    card.appendChild(divRow);
+    card.appendChild(divCol);
+    card.appendChild(divCard);
+    card.appendChild(divImg);
+    card.appendChild(cardContent);
+    card.appendChild(cardAction);
 
-    divImg.appendChild(imgAvatar)
-    divImg.appendChild(cardTitle)
-    cardContent.appendChild(jokeTxt)
+    divImg.appendChild(imgAvatar);
+    divImg.appendChild(cardTitle);
+    cardContent.appendChild(jokeTxt);
     cardAction.appendChild(delBttn);
     
     document.querySelector('.joke-card').appendChild(card);
