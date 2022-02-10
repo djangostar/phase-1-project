@@ -73,6 +73,7 @@ const renderChuckNorris = () => {
     bttn.id = "generate";
     bttn.innerText = "Generate";
     
+    // Append Elements
     divContainer.appendChild(chuckImg);
     divContainer.appendChild(smallMute);
     divContainer.appendChild(divBttnCont);
@@ -82,6 +83,7 @@ const renderChuckNorris = () => {
 
     mainDiv().appendChild(divContainer);
 
+    //Actual Event that loads the random joke
     bttn.addEventListener('click', (e) => {
         e.preventDefault();
         loadJokes();
@@ -89,13 +91,12 @@ const renderChuckNorris = () => {
 };
 
 const renderJoke = (joke) => {
+//  Started with literal
 
-    //Started with literal
-
-//     let card = makeEl('li')
-//     card.className = 'main-card'
-//     card.innerHTML = `
-//     <div class="row">
+//  let card = makeEl('li')
+//  card.className = 'main-card'
+//  card.innerHTML = `
+//   <div class="row">
 //     <div class="col s12 m7">
 //       <div class="card">
 //         <div class="card-image">
