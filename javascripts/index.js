@@ -218,6 +218,11 @@ document.addEventListener('DOMContentLoaded', () => {
     credits();
 })
 
+
+
+
+//** Live coding question **/
+//given array
 const arr = ['Cake', 'caramels', 'muffin', 'lemon', 'drops', 'chocolate.', 'Tootsie', 'roll', 'lemon', 'drops', 'muffin', 'danish', 'lollipop.', 'Jelly', 'halvah', 'croissant', 'sesame', 'snaps', 'bonbon', 'powder.', 'Tart', 'jelly', 'beans', 'apple', 'pie', 'brownie', 'wafer', 'fruitcake', 'halvah', 'sweet', 'roll', 'bonbon.', 'Soufflé', 'brownie', 'sugar', 'plum', 'halvah', 'powder', 'danish.', 'Chupa', 'chups', 'cookie', 'cupcake', 'wafer', 'sweet', 'roll', 'dragée', 'icing.', 'Cheesecake', 'toffee', 'cupcake', 'tiramisu', 'carrot', 'cake', 'jujubes.', 'Powder', 'tiramisu', 'gingerbread', 'pastry', 'chocolate', 'pastry', 'soufflé', 'candy', 'canes', 'carrot', 'cake.', 'Jelly-o', 'biscuit', 'oat', 'cake', 'gummi', 'bears', 'sweet', 'roll', 'cotton', 'candy', 'carrot', 'cake', 'candy', 'canes.']
 
 //iterate over the array
@@ -225,13 +230,18 @@ const arr = ['Cake', 'caramels', 'muffin', 'lemon', 'drops', 'chocolate.', 'Toot
 //count each letter of each element
 //add it to the total which should amount 475
 
-//forEach or map
-//reduce to accumulate the total number of letters
 
+
+//create new array and set its value to 0
 let newArr = 0
 
+//map over the original array
+//grab the element
+//grab the lenght of each word and add it to the new array
 arr.map(word => {
     newArr += word.length
 })
+
+//console.log result, which is 475. Kid stuff.
 
 console.log(newArr)
